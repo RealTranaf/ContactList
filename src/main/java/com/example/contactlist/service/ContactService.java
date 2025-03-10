@@ -38,7 +38,7 @@ public class ContactService {
     }
 
     public void deleteContact(String contactId){
-
+        contactRepo.deleteById(contactId);
     }
     public String uploadPhoto(String contactId, MultipartFile image){
         Contact contact = getContact(contactId);

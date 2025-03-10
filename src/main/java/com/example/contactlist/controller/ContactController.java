@@ -38,6 +38,11 @@ public class ContactController {
         return contactService.getContact(id);
     }
 
+    @DeleteMapping("/{id}")
+    public void deleteContact(@PathVariable(value = "id") String id) {
+        contactService.deleteContact(id);
+    }
+
     @PostMapping("/photo")
     public String uploadPhoto(@RequestParam("id") String id, @RequestParam("file")MultipartFile image){
         return contactService.uploadPhoto(id, image);
@@ -47,4 +52,5 @@ public class ContactController {
     public byte[] getPhoto(@PathVariable("filename") String filename) throws IOException {
         return Files.readAllBytes(Paths.get(PHOTO_DIRECTORY + filename));
     }
+
 }
